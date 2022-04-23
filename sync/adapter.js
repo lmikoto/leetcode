@@ -3,13 +3,12 @@
 const superagent = require('superagent');
 const { formatRaw } = require('yuque-hexo/util');
 const getEtag = require('yuque-hexo/lib/qetag');
-const img2Cdn = require('yuque-hexo/util/img2cdn');
 const out = require('yuque-hexo/lib/out');
 const fs = require('fs')
 
 // 获取语雀的图片链接的正则表达式
 const imageUrlRegExp = /!\[(.*?)]\((.*?)\)/mg;
-const imageDirName = 'images'
+const imageDirName = 'post/images'
 
 
 

@@ -13,13 +13,12 @@
     "repo": "leetcode",
     "adapter": "sync/adapter.js",
     "baseUrl": "https://www.yuque.com/api/v2",
-    "postPath": "leetcode",
+    "postPath": "post",
     "mdNameFormat": "title",
     "onlyPublished": true
   },
   "scripts": {
-    "sync": "yuque-hexo sync",
-    "clean": "yuque-hexo clean",
-    "deploy": "npm run sync && node deploy.js"
+    "sync": "yuque-hexo sync && node sync/autoSort.js",
+    "clean": "yuque-hexo clean"
   }
 }
