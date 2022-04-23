@@ -107,7 +107,7 @@ const imageDirName = 'images'
         fs.mkdirSync(imageDirName)
       }
 
-      fs.writeFileSync(`${imageDirName}/${fileName}`,img2Buffer)
+      fs.writeFileSync(`${imageDirName}/${fileName}`,imgBuffer)
       return {
         originalUrl: matchYuqueImgUrl,
         yuqueRealImgUrl: yuqueImgUrl,
