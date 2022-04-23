@@ -1,0 +1,23 @@
+async function img2Buffer(yuqueImgUrl) {
+  return await new Promise(async function(resolve) {
+    try {
+      await superagent
+        .get(yuqueImgUrl)
+        .buffer(true)
+        .parse(res => {
+          const buffer = [];
+          res.on('data', chunk => {
+            buffer.push(chunk);
+          });
+          res.on('end', () => {
+            const data = Buffer.concat(buffer);
+            resolve(data);
+          });
+        });
+    } catch (e) {
+      out.warn(`invalid img: ${yuqueImgUrl}`);
+      out.warn(e)
+      resolve(null);
+    }
+  });
+}

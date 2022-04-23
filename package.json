@@ -1,0 +1,25 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lmikoto/leetcode",
+  "author": "lmikoto <lmikoto@outlook.com>",
+  "license": "MIT",
+  "dependencies": {
+    "yuque-hexo": "^1.9.1"
+  },
+  "yuqueConfig": {
+    "login": "lmikoto",
+    "repo": "leetcode",
+    "adapter": "sync/adapter.js",
+    "baseUrl": "https://www.yuque.com/api/v2",
+    "postPath": "leetcode",
+    "mdNameFormat": "title",
+    "onlyPublished": true
+  },
+  "scripts": {
+    "sync": "yuque-hexo sync",
+    "clean": "yuque-hexo clean",
+    "deploy": "npm run sync && node deploy.js"
+  }
+}
