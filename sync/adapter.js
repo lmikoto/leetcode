@@ -111,7 +111,7 @@ const imageDirName = 'images'
       return {
         originalUrl: matchYuqueImgUrl,
         yuqueRealImgUrl: yuqueImgUrl,
-        url: `./${imageDirName}/${fileName}`,
+        url: `../${imageDirName}/${fileName}`,
       };
     } catch (e) {
       out.error(`访问图床出错，请检查配置: ${e}`);
