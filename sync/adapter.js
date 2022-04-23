@@ -137,7 +137,7 @@ const imageDirName = 'post/images'
 module.exports = async function(post) {
   // 语雀img下载
   post = await imgDownload(post);
-  const { body } = post;
+  const { body,title } = post;
   const raw = formatRaw(body);
-  return raw;
+  return `# ${title}  \n${raw}`;
 };
