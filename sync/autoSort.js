@@ -30,7 +30,7 @@ _.forEach(postNames,name=>{
     return
   }
 
-  const categoriesLine = content.trim().split('\n')[0]
+  const categoriesLine = content.trim().split('\n')[1]
 
   if(_.isEmpty(categoriesLine)){
     return
@@ -55,7 +55,7 @@ if(_.isEmpty(categoryMap)){
 }
 
 let categoriesStr = ''
-_.forEach(categoryMap,(categoriesSet,category)=>{
+_.forOwn(categoryMap,(categoriesSet,category)=>{
   const categoriesArr = Array.from(categoriesSet)
   categoriesArr.sort((c1,c2)=>{
     const num1 = c1.split('.')[0]
@@ -74,6 +74,8 @@ const readme = fs.readFileSync('README.md','utf-8')
 const startIndex = readme.indexOf(categoryStart)
 const endIndex = readme.indexOf(categoryEnd)
 
+
+out.info('categoriesStr',categoriesStr)
 
 const newReadme = readme.slice(0,startIndex + categoryStart.length) + '\n' + categoriesStr + '\n' + readme.slice(endIndex)
 
