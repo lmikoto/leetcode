@@ -1,0 +1,23 @@
+name: Deploy
+on: [repository_dispatch,workflow_dispatch]
+jobs: 
+  deploy:
+     name: Deploy
+     runs-on: ubuntu-latest
+     env: 
+        TZ: Asia/Shanghai
+     steps:
+        - name: Checkout Repository master branch
+          uses: actions/checkout@main
+        - name: Setup Node.js 10.x
+          uses: actions/setup-node@master
+          with:
+            node-version: "10.x"
+        - name: commit
+          env:
+            YUQUE_TOKEN: ${{ secrets.YUQUE_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN  }}
+          run: |
+           npm install
+           npm run sync
+           sh gitcommit.sh
