@@ -8,9 +8,6 @@ const out = require('yuque-hexo/lib/out');
 const ERROR_CODE = 255
 const postPath = 'post'
 
-const categoryStart = '<!-- categoryStart -->'
-const categoryEnd = '<!-- categoryEnd -->'
-
 const postNames = fs.readdirSync(postPath)
 
 if(_.isEmpty(postNames)){
@@ -35,6 +32,11 @@ _.forEach(postNames,name=>{
   if(_.isEmpty(categoriesLine)){
     return
   }
+
+  if(!categoriesLine.startsWith("> ")){
+    return
+  }
+
   const categories = categoriesLine.replace("> ","").trim().split(" ")
   if(_.isEmpty(categories)){
     return
@@ -71,6 +73,8 @@ _.forOwn(categoryMap,(categoriesSet,category)=>{
 
 const readme = fs.readFileSync('README.md','utf-8')
 
+const categoryStart = '<!-- categoryStart -->'
+const categoryEnd = '<!-- categoryEnd -->'
 const startIndex = readme.indexOf(categoryStart)
 const endIndex = readme.indexOf(categoryEnd)
 
